@@ -1,0 +1,93 @@
+This is a short introduction into the features added.
+
+\cfsection{References}{subdir}{refs}
+
+\cfsection{Subfigure}{subdir}{subfig}
+
+\section{Other Stuff}
+
+\emph{siunitx} might not be used much in the computer science, but a bit
+frequency calculation might be nice:
+\num{2d10} \si{\hertz} = \num{20} \si{\giga\hertz} = \num{2d10}
+\si{\per\second}=  \num{2d-10} \si{\second}
+
+Or some data size calculations:
+\begin{math}
+	\SI{100}{\mebi\byte} \neq \SI{100}{\mega\byte}
+\end{math}
+
+Surprisingly there are some packages missing which I think are commonly used in
+computer science, i.e.\ \emph{dsfont} for $i \in \mathds{N}$ or \emph{amsmath}
+for $3 \equiv 6 \mod{3}$.
+
+\begin{lem} \label{lem:l1}
+	Some theses will include lemmas and proofs
+\end{lem}
+\begin{lem} \label{lem:l2}
+	$1 + 1 = 2$
+\end{lem}
+\begin{thm} \label{thm:t1}
+	A theorem
+\end{thm}
+\begin{proof}
+	Isn't it obvious?
+\end{proof}
+\Cref{lem:l1,lem:l2} need no proof.
+
+
+Also very fancy and useful it the \emph{todonotes} package\todo{i bet you
+	didn't missed this todo :)}
+
+Oh, and do not forget that there is an acronym-package.
+Please, remove this \ac{TMR} in you text and use this package instead of
+	typing it every time.
+This also allows you to add a nice list of the used acronyms, which is not
+	that important.
+
+Similar to acronyms, you can use the nomencl-package to define you
+	nomenclature, which may be of more interest in some cases.
+\nomenclature[1a]{$\pi$}{A factor which is relevant to pizza!}
+For example, we now say the $\pi$ will denote something related to pizza!
+Which is now listed on the very last page, behind the bibliographic, so that
+	everybody will miss it.
+
+As usual, consult the documentation of the respective package for more
+	informations.
+
+\section{Non \LaTeX{} stuff}
+You might want to checkout awc
+\url{https://github.com/devd/Academic-Writing-Check} for some basic checking,
+mainly the typographic stuff related to \LaTeX{} is nice.
+
+Also \texttt{aspell} has a special mode for checking \LaTeX{} and \TeX{}
+documents: \texttt{aspell --mode=tex -c thesis.tex}.\footnote{You have to call
+	aspell for every tex file, included files are \textbf{not} checked!}
+In this mode most \TeX{ commands are ignored (but not all).
+
+There is also a great amount of other tools for checking style or grammar,
+but most of them don't process \TeX{} (and i haven't used them yet, so there
+may be dragons).
+You can use \texttt{detex} to get plain-text from your \TeX{} files, but it has
+its limitations.
+
+With the plain-text you can use GNU programs \texttt{diction} and
+\texttt{style},\footnote{\url{https://www.gnu.org/software/diction/diction.html}}
+or something more advanced like \textit{after the deadline}
+\footnote{\url{http://www.afterthedeadline.com/}} or \textit{languageTool}.
+\footnote{\url{http://www.languagetool.org/}}
+
+
+Another hint:
+If you use a VCS (and you should!\footnote{git \url{http://git-scm.com/} is my
+	personal favorite}) then you may want to start a new line after every .\
+and keep the length of your lines at about 80 characters (word-wrap).
+The former is personal conditioning, the later is supported by most editors
+and normally done anyway (but not always to 80).
+
+You might want to know why this is useful:
+If you use a VCS you might want to see the difference between two versions.
+This is supported by every VCS, but if you write a whole page of text as one
+monolithic block, then one new word at the wrong place can cause a
+rewrapping of the whole thing (especially if the line length your editor uses
+depends on its windowsize).
+Then you still have a diff, but i doubt it will show you the real difference.

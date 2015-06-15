@@ -1,0 +1,39 @@
+\label{sec:ref}
+
+This is just to show how to make a separation of the tex documents.
+
+\subsection{And a subsection}
+\label{ssec:subsec}
+
+How nice is it to write here?
+
+\subsubsection{And a subsubsection}
+\label{sssec:subsubsec}
+
+Well, same as in \cref{ssec:subsec}.
+So basically \cref{sec:ref,ch:bibliographic,sssec:subsubsec,ssec:subsec} have
+no content what so ever (ok, the chapter reference is just there to show how
+cool cref is).
+
+As will be shown later, figures and others stuff can also be referenced very
+conveniently.
+If every reference, as \Cref{sfig:a}, should be capitalized, then passing the
+option \texttt{capitalise} to the cleveref package allows this.
+Passing the option \texttt{nameinlink} also includes the environment name into
+the linked area.
+
+As \emph{cleveref} is very powerful:
+The following section is produced by the cref using the given label:
+\namecref{ssec:subsec}.
+This is also used in every normal references, thus there is no need for custom
+commands which add the name of the environment.
+Although for some environment, e.g.\ some algorithm packages, you need to
+define the environment name.
+
+Consulting the documentation of cref might be a good idea if you dislike
+something about the way the references are handled or formatted.
+
+BTW: did you notice that cref sorts the references?
+In the second sentence of this section the chapter reference was the second
+reference given, but in the output it is the last.
+

@@ -1,0 +1,14 @@
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[->, auto, node distance=2.8cm, semithick]
+	  \node[initial, state] (1)		 {$S_1$};
+	  \node[state] 		(2) [right of=1] {$S_2$};
+	
+	  \path (1) edge [bend left]  node {0} (2)
+		(1) edge [loop above] node {1} (1)
+		(2) edge [bend left]  node {0} (1)
+		(2) edge [loop above] node {1} (2);
+	\end{tikzpicture}
+	\caption{Sample figure}
+	\label{fig:samplefigure_tikz}
+\end{figure}

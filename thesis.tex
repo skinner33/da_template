@@ -1,0 +1,220 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[a4paper,11pt,twoside]{memoir}
+\chapterstyle{veelo}
+
+\usepackage{TUINFDA}
+
+\usepackage{url}
+\usepackage{graphicx}            			% Figures
+\usepackage{verbatim}            			% Code-Environment
+%\usepackage[lined,linesnumbered,algochapter]{algorithm2e} % Algorithm-Environment
+
+\usepackage{pgf}
+\usepackage{tikz}					% tikz graphics
+\usetikzlibrary{arrows,automata,calc}
+
+
+\usepackage{cite}       % Deutsche Bezeichnungen, Automatisches Zusammenfassen von Literaturstellen
+\usepackage{varioref}  % Querverweise
+% to use the german charset include cp850 for MS-DOS, ansinew for Windows and latin1 for Linux.
+% \usepackage[latin1]{inputenc}
+
+\usepackage{chapterfolder}
+\usepackage[colorlinks]{hyperref}					% links in pdf
+\usepackage{xspace}
+\usepackage{siunitx}
+\sisetup{
+  per-mode=symbol,
+  binary-units=true
+}
+
+\usepackage{subfig}
+\newcommand{\subfigureautorefname}{\figureautorefname}
+
+% improve typesetting
+\usepackage[activate]{microtype}
+% removes warnings due to usage of mircotype and siunitx, based on siunitx'
+% redefinition of some style.
+% check later if this has a bad effect on the typography
+\usepackage{textcomp}
+% for acronymns
+\usepackage{acronym}
+% for \pgf/tikz and \BibTeX
+\usepackage{dtklogos}
+% for \mathds{}
+\usepackage{dsfont}
+% for \mod{} (==modulo)
+\usepackage{amsmath}
+% fixes some quirks of amsmath
+\usepackage{mathtools}
+% for lemmata, theorems and proofs
+\usepackage[thmmarks,amsmath,hyperref]{ntheorem}
+% Algorithm package
+\usepackage[ruled,noend,linesnumbered]{algorithm2e}
+\usepackage{algpseudocode}
+% for C style comments
+\algrenewcomment[1]{\quad// #1}
+% for 'fancy' \todo
+\usepackage{todonotes}
+% for notation page
+\usepackage[refpage]{nomencl}
+\makenomenclature
+% right aligned labels in description-env
+\usepackage{enumitem}
+\usepackage{calc}
+\SetLabelAlign{parright}{\parbox[t]{\labelwidth}{\raggedleft#1}}
+% to exclude certian stuff in draft mode, to speed up compile
+\usepackage{ifdraft}
+% for subfigures
+\usepackage{subfig}
+% adds lines for tables with different spacing
+\usepackage{booktabs}
+% reduce the fontsize for captions
+\usepackage[font=small,format=hang]{caption}
+
+% noabbrev disables the use of fig. instead of figure
+\usepackage[noabbrev,capitalise,nameinlink]{cleveref}
+\crefname{assume}{assumption}{assumptions}
+\crefname{lem}{lemma}{lemmas}
+\crefname{thm}{theorem}{theorems}
+\crefname{cor}{corollary}{corollaries}
+\crefname{define}{definition}{definitions}
+
+\usepackage{fixltx2e}
+
+
+
+\thesistitle{Title of the Thesis}
+\thesissubtitle{Optional Subtitle} % optional
+\thesisdate{TT.MM.JJJJ}
+
+% all titles and designations have to be gender-related!
+\thesisdegree{Diplom-Ingenieurin}{Diplom-Ingenieurin}
+\thesiscurriculum{Wirtschaftsinformatik}{Business Informatics} % your study
+\thesisverfassung{Verfasserin} % Verfasser
+\thesisauthor{Martina Musterfrau} % your name
+\thesisauthoraddress{Musterplatz 1, 1111 Wien} % your address
+\thesismatrikelno{0123456} % your registration number
+
+\thesisbetreins{o.Univ.-Prof. Dipl.-Ing. Mag. Dr. Monika Musterprofessorin}
+\thesisbetrzwei{Dr. Vorname Familienname}
+\thesisbetrdrei{Dr. Vorname Familienname} % optional
+
+% define page numbering styles
+\makepagestyle{numberCorner}
+\makeevenfoot{numberCorner}{\thepage}{}{}
+\makeoddfoot{numberCorner}{}{}{\thepage}
+
+% define custom macros for specific formats or names
+%
+% use \xspace at the to get smart spacing i.e. latex inserts a space when
+% needed.
+\newcommand{\uml}[1]{\texttt{#1}\xspace}
+\newcommand{\cd}{\textsf{Class Diagram}\xspace}
+
+%acronyms
+\acrodef{TMR}{\emph{triple modular redundancy}}
+%\DeclareAcronym{TMR}{
+%	short = TMR,
+%	long = triple modular redundancy,
+%}
+
+\begin{document}
+
+\captionnamefont{\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   FRONTMATTER    %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   TITLEPAGES    %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% the german title page is required as first page
+\include{titlepage}
+
+% an english translation may follow
+\include{titlepage_en} % optional
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   ERKLAERUNG DER SELBSTAENDIGKEIT   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\selectlanguage{ngerman}
+\input{chapters/erklaerung}
+\selectlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   ACKNOWLEDGEMENTS    %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% optional acknowledgements may be included in german or in english
+%\input{chapters/danksagung} 		% optional
+\input{chapters/acknowledgements}	% optional
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   ABSTARCT    %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{chapters/abstract_en}
+\cleardoublepage
+\selectlanguage{ngerman}
+\input{chapters/abstract_de}
+\selectlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   CONTENTS    %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% uncomment to set document language to german (results in "Inhaltsverzeichnis",
+% "Kapitel", "Abbildung", etc. instead of "Contents", "Chapter", and "Figure"),
+% otherwise the document's language is english
+%\selectlanguage{ngerman}
+
+\setcounter{tocdepth}{1}
+
+\cleardoublepage
+\pagestyle{numberCorner}
+\tableofcontents*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   MAINMATTER    %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+% Include number also in subsubsections
+\setsecnumdepth{subsubsection}
+
+\pagenumbering{arabic}
+\pagestyle{numberCorner}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cfchapter{Introduction}{chapters}{introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cfchapter{Typographic Design}{chapters}{design}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cfchapter{Bibliographic Issues}{chapters}{bibliographic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cfchapter{Updated Features}{chapters}{update}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BACKMATTER %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\bibliographystyle{IEEEtranS}
+\bibliography{references}
+
+\printnomenclature
+
+\end{document}
